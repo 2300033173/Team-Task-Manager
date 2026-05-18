@@ -1,0 +1,8 @@
+Please set the following environment variables in Railway (or locally):
+
+- MONGO_URI  : MongoDB connection string (e.g. mongodb+srv://...)
+- JWT_SECRET : Secret used to sign JWT tokens
+- PORT       : Optional, default 5000
+- CLIENT_URL : Frontend application URL (e.g. https://your-frontend)
+
+Do NOT commit secrets into source control.
