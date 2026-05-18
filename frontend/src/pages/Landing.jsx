@@ -186,7 +186,7 @@ export default function Landing() {
               <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>Send Message</button>
             </form>
             <div style={{ marginTop: '20px', paddingTop: '20px', borderTop: '1px solid #f0f0f0', textAlign: 'center', fontSize: '13px', color: '#888' }}>
-              📧 support@taskmanager.com | 📱 +1 (555) 123-4567
+              📧 2300033173@kluniversity.in | 📧 support@taskmanager.com | 📱 +1 (555) 123-4567
             </div>
           </div>
         </div>
@@ -194,7 +194,7 @@ export default function Landing() {
 
       {/* Footer */}
       <footer style={{ background: '#1a1a1a', color: 'white', padding: '30px 20px', textAlign: 'center', fontSize: '12px' }}>
-        <p>© 2024 Team Task Manager. Built with React, Node.js & MongoDB. Deployed on Railway.</p>
+        <p>© 2026 Team Task Manager. Built with React, Node.js & MongoDB. Deployed on Railway.</p>
         <p style={{ marginTop: '8px', color: '#999' }}>Owner: TADIMARRI VARDHINI REDDY</p>
       </footer>
     </div>

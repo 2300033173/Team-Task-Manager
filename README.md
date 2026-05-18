@@ -359,7 +359,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📞 Support
 
-For support, email support@taskmanager.com or open an issue on GitHub.
+For support, email 2300033173@kluniversity.in or support@taskmanager.com or open an issue on GitHub.
 
 ---
 

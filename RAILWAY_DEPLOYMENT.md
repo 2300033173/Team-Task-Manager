@@ -269,3 +269,5 @@ Your Team Task Manager is now deployed on Railway and accessible to the world!
 ---
 
 **Owner:** TADIMARRI VARDHINI REDDY
+
+**Support Email:** 2300033173@kluniversity.in
