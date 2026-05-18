@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import ForgotPassword from './pages/ForgotPassword';
 import Dashboard from './pages/Dashboard';
 import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
@@ -13,20 +14,21 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const accessToken = localStorage.getItem('accessToken');
     const userData = localStorage.getItem('user');
-    if (token && userData) setUser(JSON.parse(userData));
+    if (accessToken && userData) setUser(JSON.parse(userData));
     setLoading(false);
   }, []);
 
-  const login = (token, userData) => {
-    localStorage.setItem('token', token);
+  const login = (accessToken, userData) => {
+    localStorage.setItem('accessToken', accessToken);
     localStorage.setItem('user', JSON.stringify(userData));
     setUser(userData);
   };
 
   const logout = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
     localStorage.removeItem('user');
     setUser(null);
   };
@@ -37,11 +39,12 @@ function App() {
     <BrowserRouter>
       {user && <Navbar user={user} logout={logout} />}
       <Routes>
-        <Route path="/"          element={user ? <Navigate to="/dashboard" /> : <Landing />} />
-        <Route path="/login"     element={user ? <Navigate to="/dashboard" /> : <Login onLogin={login} />} />
-        <Route path="/signup"    element={user ? <Navigate to="/dashboard" /> : <Signup onLogin={login} />} />
-        <Route path="/dashboard" element={user ? <Dashboard />              : <Navigate to="/" />} />
-        <Route path="/projects"  element={user ? <Projects />               : <Navigate to="/" />} />
+        <Route path="/"              element={user ? <Navigate to="/dashboard" /> : <Landing />} />
+        <Route path="/login"         element={user ? <Navigate to="/dashboard" /> : <Login onLogin={login} />} />
+        <Route path="/signup"        element={user ? <Navigate to="/dashboard" /> : <Signup onLogin={login} />} />
+        <Route path="/forgot-password" element={user ? <Navigate to="/dashboard" /> : <ForgotPassword />} />
+        <Route path="/dashboard"     element={user ? <Dashboard />              : <Navigate to="/" />} />
+        <Route path="/projects"      element={user ? <Projects />               : <Navigate to="/" />} />
         <Route path="/projects/:projectId" element={user ? <ProjectDetail user={user} /> : <Navigate to="/" />} />
       </Routes>
     </BrowserRouter>

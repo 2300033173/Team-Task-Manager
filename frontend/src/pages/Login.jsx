@@ -17,8 +17,10 @@ export default function Login({ onLogin }) {
     setError('');
     setLoading(true);
     try {
-      const { token, user } = await authAPI.login(form);
-      onLogin(token, user);
+      const { accessToken, refreshToken, user } = await authAPI.login(form);
+      localStorage.setItem('accessToken', accessToken);
+      localStorage.setItem('refreshToken', refreshToken);
+      onLogin(accessToken, user);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -82,6 +84,11 @@ export default function Login({ onLogin }) {
           Don't have an account?{' '}
           <Link to={`/signup?role=${role}`}>
             Register as {isAdmin ? 'Admin' : 'Member'}
+          </Link>
+        </div>
+        <div className="auth-footer" style={{ marginTop: '8px' }}>
+          <Link to="/forgot-password" style={{ color: '#d32f2f', fontWeight: 600 }}>
+            Forgot Password?
           </Link>
         </div>
         <div className="auth-footer" style={{ marginTop: '8px' }}>

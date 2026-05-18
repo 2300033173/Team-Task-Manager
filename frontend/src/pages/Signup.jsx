@@ -18,8 +18,10 @@ export default function Signup({ onLogin }) {
     if (form.password.length < 6) { setError('Password must be at least 6 characters'); return; }
     setLoading(true);
     try {
-      const { token, user } = await authAPI.signup(form);
-      onLogin(token, user);
+      const { accessToken, refreshToken, user } = await authAPI.signup(form);
+      localStorage.setItem('accessToken', accessToken);
+      localStorage.setItem('refreshToken', refreshToken);
+      onLogin(accessToken, user);
     } catch (err) {
       setError(err.message);
     } finally {
