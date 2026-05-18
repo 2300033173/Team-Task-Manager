@@ -1,0 +1,85 @@
+# Railway Environment Variables Template
+
+## BACKEND SERVICE
+
+# MongoDB Connection String (from Railway MongoDB service)
+MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/teamtaskmanager?retryWrites=true&w=majority
+
+# JWT Secret (generate a strong random string)
+JWT_SECRET=your_super_secret_jwt_key_change_this_2024_make_it_long_and_random
+
+# Port (Railway will set this automatically, but keep for reference)
+PORT=5000
+
+# Frontend URL (update after frontend is deployed)
+CLIENT_URL=https://your-frontend-url.railway.app
+
+# Environment
+NODE_ENV=production
+
+---
+
+## FRONTEND SERVICE
+
+# Backend API URL (update after backend is deployed)
+VITE_API_URL=https://your-backend-url.railway.app/api
+
+---
+
+## HOW TO GET THESE VALUES
+
+### MONGO_URI
+1. Deploy MongoDB service on Railway
+2. Click on MongoDB service
+3. Go to "Connect" tab
+4. Copy the connection string
+5. Paste it as MONGO_URI
+
+### JWT_SECRET
+Generate a random string:
+- Option 1: Use online generator (https://www.random.org/strings/)
+- Option 2: Use terminal: `openssl rand -base64 32`
+- Make it at least 32 characters
+
+### CLIENT_URL & VITE_API_URL
+1. Deploy backend first
+2. Get backend URL from "Connect" tab
+3. Deploy frontend
+4. Get frontend URL from "Connect" tab
+5. Update both services with correct URLs
+
+---
+
+## STEP-BY-STEP SETUP
+
+1. Create MongoDB service on Railway
+2. Copy MONGO_URI from MongoDB service
+3. Deploy Backend service with MONGO_URI and JWT_SECRET
+4. Get Backend URL
+5. Deploy Frontend service with VITE_API_URL
+6. Get Frontend URL
+7. Update Backend CLIENT_URL with Frontend URL
+8. Redeploy Backend
+9. Test by visiting Frontend URL
+
+---
+
+## VERIFICATION
+
+After deployment, test these endpoints:
+
+### Health Check
+GET https://your-backend.railway.app/api/health
+Response: { "status": "ok" }
+
+### Signup
+POST https://your-backend.railway.app/api/auth/signup
+Body: { "name": "Test", "email": "test@example.com", "password": "test123" }
+
+### Login
+POST https://your-backend.railway.app/api/auth/login
+Body: { "email": "admin@demo.com", "password": "admin123" }
+
+---
+
+Owner: TADIMARRI VARDHINI REDDY
